@@ -1,12 +1,14 @@
 Package: binompoiscont
-Title: What the Package Does (One Line, Title Case)
+Title: Continuous versions of dbinom and dpois
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+     person("Crist-Jan", "Doedens", , "cfjdoedens@chance-matters.nl", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: The functions stat::dbinom(k, n, p) and stat::dpois(lambda, x) are restricted in that k, n, and lambda should be whole non negative integers. We introduce here the functional counterparts dbinom_continuous(k, n, p) and dpois(lambda, x) that have these restrictios lifted.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
