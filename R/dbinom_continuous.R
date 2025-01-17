@@ -14,6 +14,18 @@
 #' So, how to interpret dbinom_continuous(k, n, p) for non integer values of
 #' n and k?
 #'
+#' The problem I want to tackle with this continuous binomial distribution is
+#' when we draw a monetary unit sample to estimate p, the total fraction of
+#' errors of the monetary mass. We draw n samples. We sum the
+#' fractions of errors in the n samples. This sum is k. So this explains
+#' a non integer k. The non integer n can be used for the case where the
+#' monetary interval used is not a whole integer multiple of the total
+#' monetary mass.
+#'
+#' Mathematically we know that dbinom_continuous(k, n, p) is the same as
+#' dbeta(p, k + 1, n - k + 1) / (n + 1). This we use below to implement
+#' dbinom_continuous().
+#'
 #' The behaviour of dbinom_continuous is also different from dbinom
 #' in the way vector arguments of length > 1 are treated.
 #' dbinom() allows for a mix of lengths for k, n and p; but this makes
