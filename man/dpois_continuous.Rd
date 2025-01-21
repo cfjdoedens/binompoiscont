@@ -32,20 +32,21 @@ So, how to interpret dpois_continuous(x, lambda) for non integer values of
 x?
 
 The problem I want to tackle with this continuous Poisson distribution is
-when we draw a monetary unit sample to estimate p, the total fraction of
-errors of the monetary mass. We draw n samples. We sum the
-fractions of monetary errors in the n samples. This sum is x.
+to assess the probability of the result of n monetary unit samples drawn from
+a monetary mass, given we know p, the total fraction of
+errors of the monetary mass. We then take x to be the sum of the
+fractions of monetary errors in the n samples.
 So this explains a non integer x.
 
-Lambda is given as n*p. Lambda is the expected number of errors in the n
-samples. So lambda is the expected value of x.
+Lambda is given as n*p. Lambda is the average expected number of errors in the
+n samples. So lambda is the expected value of x.
 
 Mathematically we know that dpois(x, lambda) is the same as
 lambda^x * exp(-lambda) / factorial(x).
 When x is not an integer we can use the gamma function to calculate the
 factorial(x) part of the formula. So we can use gamma(x + 1) instead of
 factorial(x). This is because gamma(x + 1) = x!.
-So, dpois_continuous(x, lambda) is the same as
+So, dpois(x, lambda) is the same as
 lambda^x * exp(-lambda) / gamma(x + 1).
 This we use below in the code for dpois_continuous().
 }
