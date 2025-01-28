@@ -12,6 +12,11 @@ binomial and Poisson distributions. These versions are implemented as
 the functions dbinom_continuous(k, n, p), dpois3_continuous(k, n, p) and
 dpois_continuous(x, lambda).
 
+For a background article see “Continuous counterparts of Poisson and
+binomial distributions and their properties” by Andrii Ilienko. For
+example to be found through the following link:
+<https://arxiv.org/abs/1303.5990>.
+
 ## Installation
 
 You can install the development version of binompoiscont from
