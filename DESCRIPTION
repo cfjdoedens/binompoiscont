@@ -2,9 +2,11 @@ Package: binompoiscont
 Title: Continuous versions of dbinom and dpois
 Version: 0.0.0.9000
 Authors@R: 
-     person("Crist-Jan", "Doedens", , "cfjdoedens@chance-matters.nl", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: The functions stat::dbinom(k, n, p) and stat::dpois(lambda, x) are restricted in that k, n, and lambda should be whole non negative integers. We introduce here the functional counterparts dbinom_continuous(k, n, p) and dpois(lambda, x) that have these restrictios lifted.
+     person("Crist-Jan", "Doedens", , "cfjdoedens@chance-matters.nl", role = c("aut", "cre"))
+Description: The functions stat::dbinom(k, n, p) and stat::dpois(lambda, x) are 
+    restricted in that k, n, and lambda should be whole non negative integers. 
+    We introduce here the respective counterparts dbinom_continuous(k, n, p) and 
+    dpois(lambda, x) that have these restrictions lifted.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
