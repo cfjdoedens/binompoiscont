@@ -46,9 +46,17 @@ versions for `ppois()`, `qpois()` and `rpois()`.
 
 You can install the development version of binompoiscont from [GitHub](https://github.com/) with:
 
-``` r
-install.packages("pak")
-pak::pak("cfjdoedens/binompoiscont")
+```{r install, message=TRUE, warning=TRUE, echo=TRUE}
+if (file.exists("/home/crist-jan/R/x86_64-pc-linux-gnu-library/4.5/binompoiscont")) {
+  # We are executing on the author machine, use the development version available there. 
+  loadNamespace("ewgraph")
+} else {
+  # Use the github version.
+  if (!requireNamespace("pak", quietly = TRUE)) {
+    install.packages("pak")
+  }
+  pak::pak("cfjdoedens/binompoiscont")
+}
 ```
 
 ## Example
