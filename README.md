@@ -3,10 +3,6 @@
 
 # binompoiscont
 
-<!-- badges: start -->
-
-<!-- badges: end -->
-
 The goal of binompoiscont is to provide continuous versions of the
 binomial and Poisson distributions. These versions are implemented as
 the functions `dbinom_continuous(k, n, p)`, `dpois3_continuous(k, n, p)`
