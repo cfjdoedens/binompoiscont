@@ -35,21 +35,14 @@ versions for `ppois()`, `qpois()` and `rpois()`.
 
 ## Installation
 
-You can install the development version of binompoiscont from
+You can install the development version of drawsneeded from
 [GitHub](https://github.com/) with:
 
 ``` r
-if (file.exists("/home/crist-jan/R/x86_64-pc-linux-gnu-library/4.5/binompoiscont")) {
-  # We are executing on the author machine, use the development version available there. 
-  loadNamespace("ewgraph")
-} else {
-  # Use the github version.
-  if (!requireNamespace("pak", quietly = TRUE)) {
-    install.packages("pak")
+  if (!requireNamespace("devtools", quietly = TRUE)) {
+    install.packages("devtools")
   }
-  pak::pak("cfjdoedens/binompoiscont")
-}
-#> <environment: namespace:ewgraph>
+  devtools::install_github("cfjdoedens/binompoiscont")
 ```
 
 ## Example
@@ -68,12 +61,10 @@ p <- 0.3
 
 ## If we use the dbinom() function we get an error: computer says no, can't do this.
 dbinom(k, n, p)
-#> Warning in dbinom(k, n, p): NaNs produced
 #> [1] NaN
 
 ## The same for the dpois() function.
 dpois(k, n * p)
-#> Warning in dpois(k, n * p): non-integer x = 3.500000
 #> [1] 0
 
 ## But this probability can be calculated with the continuous versions.
