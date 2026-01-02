@@ -1,6 +1,6 @@
 # Bayesian upper, i.e. Maximum, credible bound for defect rate
 #
-#   UNDER CONSTRUCTION !!!!!
+#   UNDER CONSTRUCTION !!!!!!
 #   Still to do:
 #   - add recursion over k, n, certainty
 #   - add parameter to say to use which prior (freq, Bayes):
