@@ -1,146 +1,120 @@
-#' Continuous version of qbinom(certainty, n, p, log = FALSE)
+# Bayesian upper, i.e. Maximum, credible bound for defect rate
+#
+#   UNDER CONSTRUCTION !!!!!
+#   Still to do:
+#   - add recursion over k, n, certainty
+#   - add parameter to say to use which prior (freq, Bayes):
+#       0, 1 or 1, 1 or otherwise (?)
+#   - add parameter for lower tail
+# Calculate the Maximum Estimated Defect Rate (Continuous Case)
+#
+# This function calculates the maximum estimated defect rate (p) for a population,
+# given a number of observed defects (k) in a sample of size (n). It is
+# equivalent to finding the upper bound of a one-sided confidence interval for a
+# binomial proportion.
+#
+# The function finds the value of `p` that solves the equation:
+# P(X <= k | n, p) = 1 - certainty
+# where X follows a binomial distribution.
+#
+# @param k a vector of 1 or more non negative real numbers;
+#   so k can be a non integer number >= 0; k <= n
+# @param n a vector of 1 or more positive real numbers;
+#   so n can be a non integer number >= 0; k <= n
+# @param certainty a vector of 1 or more real numbers in \[0, 1\]
+#
+# @returns A real number in \[0, 1\], which represents the upper credible bound
+# @export
+# @importFrom stats qbeta
+# examples
+#   qbinom_continuous()
+#
+# qbinom_continuous <- function(k = 0,
+#                               n = 300,
+#                               certainty = 0.95) {
+#   # Prior parameters (e.g., for a Uniform(0,1) prior, which is Beta(1,1))
+#   alpha_prior <- 0 # Frequentist.
+#   # alpha_prior <- 1 # Bayesian
+#   beta_prior <- 1
+#
+#   # Calculate posterior parameters
+#   alpha_posterior <- alpha_prior + k
+#   beta_posterior <- beta_prior + (n - k)
+#
+#   # Calculate the upper credible bound using qbeta()
+#   # qbeta(certainty, shape1, shape2) where certainty is the quantile
+#   r <- qbeta(p = certainty, shape1 = alpha_posterior, shape2 = beta_posterior)
+#
+#   return(r)
+# }
+
+#' Calculate the Maximum Estimated Defect Rate (Continuous Case)
 #'
-#' @description
-#' pbinom_continuous(certainty, n, p, log = FALSE) is a continuous version of
-#' pbinom(certainty, n, p, log = FALSE).
-#' In pbinom(certainty, n, p, log = FALSE), n is restricted to be a non
-#' negative whole number.
-#' In pbinom_continuous(certainty, n, p, log = FALSE), n can be any non
-#' negative real number.
+#' This function calculates the maximum estimated defect rate (p) for a population,
+#' given a number of observed defects (k) in a sample of size (n). It is
+#' equivalent to finding the upper bound of a one-sided confidence interval for a
+#' binomial proportion.
 #'
-#' pbinom_continuous(certainty, n, p, log = FALSE) is the
-#' cumulative density function of a continuous version of the binomial
-#' chance density function, given n samples from a mass with a fraction
-#' of p errors.
+#' The function finds the value of `p` that solves the equation:
+#' P(X <= k | n, p) = 1 - certainty
+#' where X follows a binomial distribution.
 #'
-#' The problem I want to tackle with this continuous binomial distribution is
-#' to assess the probability of the result of n monetary unit samples drawn from
-#' a monetary mass, given we know p, the total fraction of
-#' errors of the monetary mass. We then take k to be the sum of the
-#' fractions of errors in the n samples. So this explains
-#' a non integer k. The non integer n can be used for the case where the
-#' monetary interval used is not a whole integer multiple of the total
-#' monetary mass.
+#' @param k A numeric value representing the number of observed defects.
+#'   Need not be an integer. Must be non-negative.
+#' @param n A numeric value representing the sample size. Need not be an integer.
+#'   Must be greater than 0.
+#' @param certainty A numeric value between 0 and 1 representing the desired
+#'   level of confidence (e.g., 0.95 for 95% certainty).
 #'
-#' Not only is pbinom_continuous(certainty, n, p) continuous in n,
-#' whereas pbinom(certainty, n, p) is not; pbinom_continuous is also different from pbinom
-#' in the way vector arguments of length > 1 are treated.
-#' pbinom() allows for a mix of lengths for certainty, n and p.
-#' This makes
-#' the semantics of the function less clear.
-#' Therefore with pbinom_continuous, only one of certainty and n and p can have a length > 1.
-#'
-#' Mathematically we know that pbinom(certainty, n, p) equals
-#' pbeta(certainty, k + 1, n - k + 1) / (n + 1). This we use below to implement
-#' dbinom_continuous().
-#'
-#' @param certainty a vector of 1 or more non negative real numbers;
-#' so k can be a non integer number >= 0; k <= n
-#' @param n a vector of 1 or more positive real numbers;
-#' so n can be a non integer number >= 0; k <= n
-#' @param p a vector of 1 or more real numbers in \[0, 1\]
-#' @param log TRUE or FALSE
-#'
-#' @returns
-#' A real number in \[0, 1\], which represents the cumulative chance density
-#'  of observing k
-#' successes in n trials, each with probability p.
-#' @export
-#'
+#' @return A numeric value representing the maximum estimated defect rate (p).
+#' @importFrom ewgraph posint
 #' @examples
-#'   dbinom_continuous(0, 300, 0.01)
-#' @importFrom stats dbeta
+#' # If we test 20 items and find 0 defects, what is the maximum defect
+#' # rate we can state with 95% certainty?
+#' qbinom_continuous(k = 0, n = 20, certainty = 0.95)
+#' # Expected output: ~0.139
 #'
-dbinom_continuous <- function(k, n, p, log = FALSE) {
-  # We allow that only one of k, n, p has a length > 1.
-  if(length(k) > 1) {
-    stopifnot(length(n) == 1 && length(p) == 1)
-  }  else if(length(n) > 1) {
-    stopifnot(length(k) == 1 && length(p) == 1)
-  }  else if(length(p) > 1) {
-    stopifnot(length(k) == 1 && length(n) == 1)
-  }
+#' # With 5 defects in a sample of 100, what's the upper bound of the
+#' # defect rate with 95% certainty?
+#' qbinom_continuous(k = 5, n = 100, certainty = 0.95)
+#' # Expected output: ~0.107
 
-  # When k is a vector, recur over each element of the vector.
-  if (length(k) > 1) {
-    r <- double(length(k))
-    for (i in 1:length(k)) {
-      r[[i]] <- dbinom_continuous(k[[i]], n, p, log)
-    }
-    return(r)
-  }
+qbinom_continuous <- function(k, n, certainty) {
+  # Still to handle: when length k, n, certainty > 1.
 
-  # When n is a vector, recur over each element of the vector.
-  if (length(n) > 1) {
-    r <- double(length(n))
-    for (i in 1:length(n)) {
-      r[[i]] <- dbinom_continuous(k, n[[i]], p, log)
-    }
-    return(r)
-  }
+  # Check input.
+  stopifnot(is.numeric(k))
+  stopifnot(posint(n))
+  stopifnot(k <= n)
+  stopifnot(is.numeric(certainty))
+  stopifnot(0 <= certainty)
+  stopifnot(certainty <= 1)
 
-  # When p is a vector, recur over each element of the vector.
-  if (length(p) > 1) {
-    r <- double(length(p))
-    for (i in 1:length(p)) {
-      r[[i]] <- dbinom_continuous(k, n, p[[i]], log)
-    }
-    return(r)
-  }
-
-  # Check input values.
-  stopifnot(length(k) == 1)
-  stopifnot(length(n) == 1)
-  stopifnot(length(p) == 1)
-
-  stopifnot(0 <= k, k <= n)
-  stopifnot(0 <= n)
-  stopifnot(0 <= p, p <= 1)
-
-  # We catch the situation where p is 0, or 1,
-  # as below we might want to be able to use log(p) and log(1-p),
-  # and log(p) == -Inf, for p is 0, and log(1-p) == -Inf for p is 1.
-  if (p == 0 && k == 0) {
+  # Edge cases.
+  if (certainty == 1) {
     return(1)
   }
-  if (p == 0 && k > 0) {
-    return(0)
-  }
-  if (p == 1 && k == n) {
-    return(1)
-  }
-  if (p == 1 && k < n) {
+  if (certainty == 0) {
     return(0)
   }
 
-  # Use dbeta().
-  # I cite from
-  # https://en.wikipedia.org/wiki/Binomial_distribution#Beta_distribution:
-  # "
-  # Beta distribution
-  #
-  # The binomial distribution and beta distribution are different views of
-  # the same model of repeated Bernoulli trials.
-  # The binomial distribution is the PMF of k successes given n
-  # independent events each with a probability p of success.
-  # Mathematically, when α = k + 1 and β = n − k + 1,
-  # the beta distribution and the binomial distribution are related
-  # by a factor of n + 1:
-  # Beta(p; α; β) = (n + 1) B(k; n; p)
-  # "
-  # Here B(k; n; p) is the binomial distribution.
-  # So B(k; n; p) = Beta(p; α; β) / (n + 1).
-  # Or B(k; n; p) = dbeta(p, k + 1, n - k + 1) / (n + 1).
-  if (!log) {
-    r <- dbeta(p, k + 1, n - k + 1) / (n + 1)
-  } else {
-    r <- log(dbeta(p, k + 1, n - k + 1)) - log(n + 1)
-    # Or use lgamma():
-    # beta_part <- lgamma(n + 1) - lgamma(k + 1) - lgamma(n - k + 1)
-    # prob_part <- k*log(p) + (n - k)*log(1-p)
-    # r <- beta_part + prob_part
+  # We formulate this as a root-finding problem: f(p) = 0.
+  # For this we need three things:
+  # 1. A function f(), that becomes 0 for the sought for value.
+  # 2. A root-finding (meta) function.
+  # 3. Application of the root-finding function to f()
+  {
+    # ad 1.
+    # The function f(p) becomes 0 when the cumulative probability
+    # of observing k or fewer defects is certainty.
+    f <- function(p) {
+      pbinom_continuous(k = k, n = n, p = p) - certainty
+    }
+
+    # ad 2.
+    # We use uniroot() from stats.
+
+    # ad 3.
+    return(uniroot(f, lower = 0, upper = 1)$root)
   }
-  stopifnot(!is.nan(r)) # is.nan(r) should not happen.
-  r
 }
-

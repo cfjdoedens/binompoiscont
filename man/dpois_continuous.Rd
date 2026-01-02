@@ -2,7 +2,7 @@
 % Please edit documentation in R/dpois_continuous.R
 \name{dpois_continuous}
 \alias{dpois_continuous}
-\title{Poisson distribution, version continuous in both arguments}
+\title{Poisson density function, version continuous in both arguments}
 \usage{
 dpois_continuous(x, lambda)
 }
@@ -19,10 +19,10 @@ that lambda events occur on average
 }
 \description{
 This is a continuous version of dpois(x, lambda).
-In dpois(x, lambda) x is restricted to be a non negative integer;
+In dpois(x, lambda) x is restricted to be a non negative \emph{integer};
 lambda can be any non negative real number.
 In dpois_continuous(x, lambda) both x and lambda can be any non negative
-real number. So for dpois_continuous(x, lambda) x does not need to be an
+\emph{real} number. So for dpois_continuous(x, lambda) x does not need to be an
 integer, but can be 0 or any positive real number.
 
 dpois(x, lambda) is the probability of x events occurring in the interval

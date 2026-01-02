@@ -3,6 +3,8 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/cfjdoedens/binompoiscont/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cfjdoedens/binompoiscont/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/cfjdoedens/binompoiscont/graph/badge.svg)](https://app.codecov.io/gh/cfjdoedens/binompoiscont)
 <!-- badges: end -->
 
 # binompoiscont
@@ -35,7 +37,7 @@ versions for `ppois()`, `qpois()` and `rpois()`.
 
 ## Installation
 
-You can install the development version of drawsneeded from
+You can install the development version of binompoiscont from
 [GitHub](https://github.com/) with:
 
 ``` r

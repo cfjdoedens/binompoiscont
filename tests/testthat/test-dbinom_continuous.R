@@ -13,48 +13,37 @@ test_that(
   }
 )
 
-test_that(
-  "dbinom_continuous should be able to handle length(k) > 1",
-  {
-    k <- 0:3
-    n <- 4
-    p <- 0.5
-    expect_equal(length(k), length(dbinom_continuous(k, n, p)))
-  }
-)
+test_that("dbinom_continuous should be able to handle length(k) > 1", {
+  k <- 0:3
+  n <- 4
+  p <- 0.5
+  expect_equal(length(k), length(dbinom_continuous(k, n, p)))
+})
 
-test_that(
-  "dbinom_continuous should be able to handle length(n) > 1",
-  {
-    k <- 0
-    n <- 4:7
-    p <- 0.5
-    expect_equal(length(n), length(dbinom_continuous(k, n, p)))
-  }
-)
+test_that("dbinom_continuous should be able to handle length(n) > 1", {
+  k <- 0
+  n <- 4:7
+  p <- 0.5
+  expect_equal(length(n), length(dbinom_continuous(k, n, p)))
+})
 
-test_that(
-  "dbinom_continuous should be able to handle length(p) > 1",
-  {
-    k <- 0
-    n <- 4
-    p <- c(0.1, 0.2, 0.3, 0.4, 0.5)
-    expect_equal(length(p), length(dbinom_continuous(k, n, p)))
-  }
-)
+test_that("dbinom_continuous should be able to handle length(p) > 1", {
+  k <- 0
+  n <- 4
+  p <- c(0.1, 0.2, 0.3, 0.4, 0.5)
+  expect_equal(length(p), length(dbinom_continuous(k, n, p)))
+})
 
-test_that(
-  "dbinom_continuous should abort when more than one of k,n,p has length > 1",
-  {
-    k1 <- 0
-    km <- 0:3
-    n1 <- 4
-    nm <- 4:7
-    p1 <- 0.5
-    pm <- c(0.1, 0.2, 0.3, 0.4, 0.5)
-    expect_error(dbinom_continuous(km, nm, p1))
-    expect_error(dbinom_continuous(km, n1, pm))
-    expect_error(dbinom_continuous(k1, nm, pm))
-    expect_error(dbinom_continuous(km, nm, pm))
-  }
-)
+test_that("dbinom_continuous should abort when more than one of k,n,p has length > 1",
+          {
+            k1 <- 0
+            km <- 0:3
+            n1 <- 4
+            nm <- 4:7
+            p1 <- 0.5
+            pm <- c(0.1, 0.2, 0.3, 0.4, 0.5)
+            expect_error(dbinom_continuous(km, nm, p1))
+            expect_error(dbinom_continuous(km, n1, pm))
+            expect_error(dbinom_continuous(k1, nm, pm))
+            expect_error(dbinom_continuous(km, nm, pm))
+          })
