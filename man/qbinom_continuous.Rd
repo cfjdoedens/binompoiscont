@@ -30,14 +30,3 @@ The function finds the value of \code{p} that solves the equation:
 P(X <= k | n, p) = 1 - certainty
 where X follows a binomial distribution.
 }
-\examples{
-# If we test 20 items and find 0 defects, what is the maximum defect
-# rate we can state with 95\% certainty?
-qbinom_continuous(k = 0, n = 20, certainty = 0.95)
-# Expected output: ~0.139
-
-# With 5 defects in a sample of 100, what's the upper bound of the
-# defect rate with 95\% certainty?
-qbinom_continuous(k = 5, n = 100, certainty = 0.95)
-# Expected output: ~0.107
-}
