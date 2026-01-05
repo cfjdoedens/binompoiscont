@@ -1,5 +1,6 @@
-#' continuous version of pbinom(k, n, p, log = FALSE)
+#' Under construction: ontinuous version of pbinom(k, n, p, log = FALSE)
 #'
+#   UNDER CONSTRUCTION !!!!!!
 #' @description
 #'   HOW COME the frequentist prior of beta(0, 1) equals
 #'     the outcome of the non continuous version: pbinom()???
@@ -63,12 +64,10 @@
 #'   A real number in \[0, 1\], which represents the cumulative chance density
 #'   of observing \code{k}
 #'   successes in \code{n} trials, each with probability \code{p}.
-#' @export
-#'
-#' @examples
-#'   pbinom_continuous(0, 300, 0.01)
 #' @importFrom stats pbeta
 #'
+# @examples
+#   pbinom_continuous(0, 300, 0.01)
 pbinom_continuous <- function(k = 0,
                               n = 300,
                               p = 0.01,

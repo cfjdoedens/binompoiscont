@@ -1,5 +1,5 @@
 #' @title
-#' Bayesian upper, i.e. Maximum, credible bound for defect rate for Poisson model
+#' Under construction: Bayesian upper, i.e. Maximum, credible bound for defect rate for Poisson model
 #'
 #' @description
 #' This function calculates the maximum estimated defect rate (p) given
