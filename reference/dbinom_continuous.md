@@ -1,0 +1,68 @@
+# Continuous version of dbinom(k, n, p, log = FALSE)
+
+dbinom_continuous(k, n, p, log = FALSE) is a continuous version of
+dbinom(k, n, p, log = FALSE). In dbinom(k, n, p, log = FALSE), k and n
+are restricted to be non negative whole numbers, with k \<= n. In
+dbinom_continuous(k, n, p, log = FALSE), both k and n can be any non
+negative real number. The restriction k \<= n still holds.
+
+dbinom(k, n, p) is the probability of k successes in n trials, each with
+probability p. How to interpret this when k and n are not whole numbers?
+So, how to interpret dbinom_continuous(k, n, p) for non integer values
+of n and k?
+
+The problem I want to tackle with this continuous binomial distribution
+is to assess the probability of the result of n monetary unit samples
+drawn from a monetary mass, given we know p, the total fraction of
+errors of the monetary mass. We then take k to be the sum of the
+fractions of errors in the n samples. So this explains a non integer k.
+The non integer n can be used for the case where the monetary interval
+used is not a whole integer multiple of the total monetary mass.
+
+Not only is dbinom_continuous(k, n, p) continuous in k and n, whereas
+dbinom(k, n, p) is not; dbinom_continuous is also different from dbinom
+in the way vector arguments of length \> 1 are treated. dbinom() allows
+for a mix of lengths for k, n and p. This makes the semantics of the
+function less clear. Therefore with dbinom_continuous, only one of k and
+n and p can have a length \> 1.
+
+Mathematically we know that dbinom(k, n, p) equals dbeta(p, k + 1, n -
+k + 1) / (n + 1). This we use below to implement dbinom_continuous().
+
+## Usage
+
+``` r
+dbinom_continuous(k = 0, n, p, log = FALSE)
+```
+
+## Arguments
+
+- k:
+
+  a vector of 1 or more non negative real numbers; so k can be a non
+  integer number \>= 0; k \<= n
+
+- n:
+
+  a vector of 1 or more positive real numbers; so n can be a non integer
+  number \>= 0; k \<= n
+
+- p:
+
+  a vector of 1 or more real numbers in \[0, 1\]
+
+- log:
+
+  TRUE or FALSE
+
+## Value
+
+A real number in \[0, 1\], which represents the chance of observing k
+successes in n trials, each with probability p.
+
+## Examples
+
+``` r
+  dbinom_continuous(0, 300, 0.01)
+#> [1] 0.04904089
+```
