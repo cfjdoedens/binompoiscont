@@ -24,6 +24,7 @@
 #' @importFrom ewgraph posint
 #' @importFrom stats pgamma
 #' @importFrom stats uniroot
+#' @keywords internal
 # examples
 # # If we test 20 items and find 0 defects, what is the maximum defect
 # # rate we can state with 95% certainty?

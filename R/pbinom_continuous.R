@@ -65,6 +65,7 @@
 #'   of observing \code{k}
 #'   successes in \code{n} trials, each with probability \code{p}.
 #' @importFrom stats pbeta
+#' @keywords internal
 #'
 # @examples
 #   pbinom_continuous(0, 300, 0.01)

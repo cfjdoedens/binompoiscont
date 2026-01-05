@@ -68,6 +68,7 @@
 #'
 #' @return A numeric value representing the maximum estimated defect rate (p).
 #' @importFrom ewgraph posint
+#' @keywords internal
 # examples
 # # If we test 20 items and find 0 defects, what is the maximum defect
 # # rate we can state with 95% certainty?
