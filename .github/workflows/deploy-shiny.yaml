@@ -1,0 +1,50 @@
+name: Deploy Shiny App
+
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: |
+            any::rsconnect
+            any::remotes
+          needs: |
+            website
+
+      - name: Install package
+        run: |
+          # Install the package itself so the app can load 'library(binompoiscont)'
+          Rscript -e 'remotes::install_local(".")'
+
+      - name: Deploy to shinyapps.io
+        run: |
+          Rscript -e "
+            rsconnect::setAccountInfo(
+              name = '${{ secrets.SHINYAPPS_NAME }}',
+              token = '${{ secrets.SHINYAPPS_TOKEN }}',
+              secret = '${{ secrets.SHINYAPPS_SECRET }}'
+            )
+
+            # Deploy the specific folder
+            rsconnect::deployApp(
+              appDir = 'inst/shiny/binompoiscont',
+              appName = 'binompoiscont',
+              forceUpdate = TRUE
+            )
+          "
