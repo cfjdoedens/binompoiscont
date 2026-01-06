@@ -1,4 +1,4 @@
-# Calculate the Maximum Estimated Defect Rate (Continuous Case)
+# Under construction: Calculate the Maximum Estimated Defect Rate (Continuous Case)
 
 This function calculates the maximum estimated defect rate (p) for a
 population, given a number of observed defects (k) in a sample of size

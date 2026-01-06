@@ -1,4 +1,4 @@
-# continuous version of pbinom(k, n, p, log = FALSE)
+# Under construction: Continuous version of pbinom(k, n, p, log = FALSE)
 
 HOW COME the frequentist prior of beta(0, 1) equals the outcome of the
 non continuous version: pbinom()??? (on the integer parameter values for
@@ -83,10 +83,3 @@ pbinom_continuous(
 A real number in \[0, 1\], which represents the cumulative chance
 density of observing `k` successes in `n` trials, each with probability
 `p`.
-
-## Examples
-
-``` r
-  pbinom_continuous(0, 300, 0.01)
-#> [1] 0.04904089
-```
