@@ -2,7 +2,7 @@
 % Please edit documentation in R/pbinom_continuous.R
 \name{pbinom_continuous}
 \alias{pbinom_continuous}
-\title{continuous version of pbinom(k, n, p, log = FALSE)}
+\title{Under construction: Continuous version of pbinom(k, n, p, log = FALSE)}
 \usage{
 pbinom_continuous(
   k = 0,
@@ -81,6 +81,4 @@ pbinom_continuous().
 
 For the moment LOG = TRUE is not implemented.
 }
-\examples{
-  pbinom_continuous(0, 300, 0.01)
-}
+\keyword{internal}

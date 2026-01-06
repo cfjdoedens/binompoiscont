@@ -2,7 +2,7 @@
 % Please edit documentation in R/qbinom_continuous.R
 \name{qbinom_continuous}
 \alias{qbinom_continuous}
-\title{Calculate the Maximum Estimated Defect Rate (Continuous Case)}
+\title{Under construction: Calculate the Maximum Estimated Defect Rate (Continuous Case)}
 \usage{
 qbinom_continuous(k, n, certainty)
 }
@@ -30,3 +30,4 @@ The function finds the value of \code{p} that solves the equation:
 P(X <= k | n, p) = 1 - certainty
 where X follows a binomial distribution.
 }
+\keyword{internal}

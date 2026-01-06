@@ -1,4 +1,4 @@
-#' Under construction: ontinuous version of pbinom(k, n, p, log = FALSE)
+#' Under construction: Continuous version of pbinom(k, n, p, log = FALSE)
 #'
 #   UNDER CONSTRUCTION !!!!!!
 #' @description

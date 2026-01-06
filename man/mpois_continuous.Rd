@@ -2,7 +2,7 @@
 % Please edit documentation in R/mpois_continuous.R
 \name{mpois_continuous}
 \alias{mpois_continuous}
-\title{Bayesian upper, i.e. Maximum, credible bound for defect rate for Poisson model}
+\title{Under construction: Bayesian upper, i.e. Maximum, credible bound for defect rate for Poisson model}
 \usage{
 mpois_continuous(k, n, certainty)
 }
@@ -30,3 +30,4 @@ In other words, the function finds the value of \code{p} that solves the equatio
 \code{P(X <= k | n, p) = 1 - certainty}
 where \code{X} follows a Poisson distribution.
 }
+\keyword{internal}

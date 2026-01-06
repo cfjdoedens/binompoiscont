@@ -2,3 +2,17 @@ url: https://cfjdoedens.github.io/binompoiscont/
 template:
   bootstrap: 5
   bootswatch: flatly  # Options: flatly, spacelab, darkly, cosmo
+reference:
+  - title: "stable"
+    desc: >
+      These functions are considered stable.
+    contents:
+      - dbinom_continuous
+      - dpois_continuous
+      - dpois3_continuous
+
+  - title: "under construction, experimental, tentative"
+    contents:
+      - mpois_continuous
+      - pbinom_continuous
+      - qbinom_continuous
