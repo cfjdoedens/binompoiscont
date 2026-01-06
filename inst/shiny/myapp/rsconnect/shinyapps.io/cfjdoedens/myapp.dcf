@@ -1,0 +1,10 @@
+name: myapp
+title:
+username: cfjdoedens
+account: cfjdoedens
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16378271
+bundleId: 11406228
+url: https://cfjdoedens.shinyapps.io/myapp/
+version: 1

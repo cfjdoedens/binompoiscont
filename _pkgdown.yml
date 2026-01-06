@@ -21,3 +21,12 @@ reference:
       - mpois_continuous
       - pbinom_continuous
       - qbinom_continuous
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github]
+  components:
+    tutorials:
+      text: "Run Live App"    # The button text
+      href: https://cfjdoedens.shinyapps.io/binompoiscont # 👈 Paste your shinyapps.io link here
+      icon: fa-rocket         # Adds a cool rocket icon
