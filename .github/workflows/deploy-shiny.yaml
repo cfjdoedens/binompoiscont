@@ -31,9 +31,9 @@ jobs:
 
       - name: Install package
         run: |
-          # Install the package itself so the app can load 'library(binompoiscont)'
-          Rscript -e 'remotes::install_local(".")'
-
+          # Install from GitHub to get the correct "RemoteType: github" metadata
+          # We use force=TRUE to ensure it reinstalls the very latest push
+          Rscript -e 'remotes::install_github("cfjdoedens/binompoiscont", force = TRUE, upgrade = "never")'
       - name: Deploy to shinyapps.io
         run: |
           Rscript -e "
