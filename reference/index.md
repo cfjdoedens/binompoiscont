@@ -11,6 +11,13 @@ These functions are considered stable.
 - [`dpois3_continuous()`](https://cfjdoedens.github.io/binompoiscont/reference/dpois3_continuous.md)
   : Poisson density function, version continuous in both arguments
 
+## interactive
+
+Launch the Shiny app
+
+- [`run_app()`](https://cfjdoedens.github.io/binompoiscont/reference/run_app.md)
+  : Launch the Shiny App
+
 ## under construction, experimental, tentative
 
 - [`mpois_continuous()`](https://cfjdoedens.github.io/binompoiscont/reference/mpois_continuous.md)
