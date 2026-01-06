@@ -11,6 +11,11 @@ reference:
       - dpois_continuous
       - dpois3_continuous
 
+  - title: "interactive"
+    desc: "Launch the Shiny app"
+    contents:
+      - run_app
+
   - title: "under construction, experimental, tentative"
     contents:
       - mpois_continuous
