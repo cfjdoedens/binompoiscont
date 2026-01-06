@@ -47,6 +47,13 @@ You can install the development version of binompoiscont from
   devtools::install_github("cfjdoedens/binompoiscont")
 ```
 
+## Interactive Visualization
+
+Want to see the distributions in action? This package includes a Shiny
+app. Run this in your R console:
+
+binompoiscont::run_app()
+
 ## Example
 
 The following code shows the usefulness of dbinom_continuous(k, n, p),

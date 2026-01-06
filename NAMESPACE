@@ -3,6 +3,7 @@
 export(dbinom_continuous)
 export(dpois3_continuous)
 export(dpois_continuous)
+export(run_app)
 importFrom(ewgraph,posint)
 importFrom(stats,dbeta)
 importFrom(stats,pbeta)
