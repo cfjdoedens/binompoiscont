@@ -5,6 +5,8 @@
 [![R-CMD-check](https://github.com/cfjdoedens/binompoiscont/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cfjdoedens/binompoiscont/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/cfjdoedens/binompoiscont/graph/badge.svg)](https://app.codecov.io/gh/cfjdoedens/binompoiscont)
+[![Deploy Shiny
+App](https://github.com/cfjdoedens/binompoiscont/actions/workflows/deploy-shiny.yaml/badge.svg)](https://github.com/cfjdoedens/binompoiscont/actions/workflows/deploy-shiny.yaml)  
 <!-- badges: end -->
 
 # binompoiscont
