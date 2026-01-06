@@ -24,8 +24,8 @@ jobs:
           extra-packages: |
             any::rsconnect
             any::remotes
-            any::cpp11    # <--- ADD THIS
-            any::isoband  # <--- ADD THIS (Optional, but good for safety)
+            any::cpp11
+            any::isoband
           needs: |
             website
 
